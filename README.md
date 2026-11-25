@@ -1,308 +1,622 @@
-# 🚀 Z-Hack 2k26
+# NutriFlow – Full-Stack Application with DevOps Automation
 
-Welcome to the official repository for your team's Zoople Hackathon project.
+A full-stack nutrition and food-related application combined with a practical DevOps implementation. This project brings together application development, containerization, CI automation, cloud infrastructure and monitoring.
 
-Each team has been assigned a **dedicated private GitLab repository**. Please read the instructions carefully before you begin development.
+The main goal is to understand how an application moves from source code to a container image and towards deployment on AWS.
 
----
-
-# 📌 Repository Access
-
-You have been granted temporary access to this repository for the duration of the hackathon.
-
-> **Important**
->
-> Your GitLab repository access will automatically expire after the hackathon ends (20/07/2026). After the expiry time, you will no longer be able to clone, pull, or push to this repository.
+**Repository:** https://github.com/Afthabahammed/nutriflow-deployment
 
 ---
 
-# 🚀 Getting Started
+## 1. Project Overview
 
-## Step 1 – Accept the GitLab Invitation
+NutriFlow is built with a React frontend, Node.js backend and MongoDB database.
 
-1. Open the invitation email received from GitLab.
-2. Accept the invitation.
-3. Sign in to your GitLab account.
+Alongside the application, this repository contains DevOps configurations for automating code checks, building Docker images, publishing images to Amazon Elastic Container Registry (ECR), and preparing AWS infrastructure using Terraform and Kubernetes manifests.
 
----
-
-## Step 2 – Clone the Repository
-
-Open this repository in GitLab.
-
-Click **Code** and copy either the **HTTPS** or **SSH** clone URL.
-
-### Clone using HTTPS
-
-```bash
-git clone https://gitlab.com/jijojohn911/NurtiFlow.git
-```
-
-### Clone using SSH (Recommended)
-
-```bash
-git clone git@gitlab.com:<username>/<repository-name>.git
-```
-
-Navigate to the project directory:
-
-```bash
-cd <repository-name>
-```
-
-> Replace `<username>` and `<repository-name>` with the values shown in your GitLab repository.
-
----
-
-## Step 3 – Verify the Repository
-
-Check your current branch:
-
-```bash
-git branch
-```
-
-Expected output:
+The project explores the following workflow:
 
 ```text
-* main
+Developer
+    |
+    v
+  GitHub
+    |
+    v
+  Jenkins
+    |
+    v
+Frontend & Backend Checks
+    |
+    v
+  SonarQube
+    |
+    v
+  Docker Build
+    |
+    v
+  Amazon ECR
+    |
+    v
+Amazon EKS / Kubernetes
+    |
+    v
+Application Deployment
 ```
 
----
-
-## Step 4 – Start Development
-
-You can now begin developing your solution.
+Monitoring with Prometheus and Grafana was also implemented in the earlier EC2-based deployment.
 
 ---
 
-## Step 5 – Save Your Changes
+## 2. Technology Stack
 
-Stage all modified files:
-
-```bash
-git add .
-```
-
-Commit your changes:
-
-```bash
-git commit -m "Describe your changes"
-```
-
-Example:
-
-```bash
-git commit -m "Implemented user authentication"
-```
-
----
-
-## Step 6 – Push Your Changes
-
-Push your commits to GitLab:
-
-```bash
-git push
-```
+| Category | Technologies |
+|---|---|
+| Frontend | React, Vite, Tailwind CSS |
+| Backend | Node.js, Express.js |
+| Database | MongoDB |
+| Containerization | Docker |
+| CI/CD | Jenkins |
+| Code Quality | SonarQube |
+| Container Registry | Amazon ECR |
+| Cloud Platform | AWS |
+| Infrastructure as Code | Terraform |
+| Container Orchestration | Kubernetes, Amazon EKS |
+| Monitoring | Prometheus, Grafana |
+| Metrics Collection | Node Exporter |
+| Version Control | Git, GitHub |
+| Operating System | Ubuntu Linux |
 
 ---
 
-## Daily Workflow
+## 3. Application Architecture
 
-Before starting work each day:
+NutriFlow follows a frontend-backend-database architecture.
 
-```bash
-git pull origin main
-```
+### Frontend
 
-After making changes:
+The frontend is developed using React and Vite, with Tailwind CSS for styling.
 
-```bash
-git add .
-git commit -m "Describe your changes"
-git push
-```
+Responsibilities include:
 
----
+- Providing the user interface.
+- Handling user interactions.
+- Communicating with backend APIs.
+- Displaying application data.
 
-# 📂 Repository Rules
+The frontend is served using Nginx in its containerized deployment.
 
-* This repository is assigned exclusively to your team.
-* Do not share repository access with anyone outside your team.
-* Commit your work regularly.
-* Push your latest changes before the submission deadline (20/07/2026).
-* Repository access will automatically expire after the hackathon.
+### Backend
 
----
+The backend is developed using Node.js and Express.js.
 
-# 📋 Development Rules
+Responsibilities include:
 
-* Development must begin **only after the official hackathon starts**.
-* No development may begin before the official event date and time.
-* Any team violating this rule will be **automatically disqualified**.
-* Teams may use open-source libraries and frameworks.
-* Pre-built templates, UI kits, and APIs are permitted unless otherwise specified.
-* Plagiarism or submission of previously developed projects is strictly prohibited.
-* Participants are responsible for ensuring they have the necessary licenses for any third-party resources used.
+- Handling API requests.
+- Processing application logic.
+- Communicating with MongoDB.
+- Managing backend operations.
 
----
+The backend listens on port `8000`.
 
-# 📦 Submission Requirements
+### Database
 
-Each team must submit:
+MongoDB is used to store application data.
 
-* Project Name
-* Team Details
-* Problem Statement
-* Proposed Solution
-* Source Code Repository
-* Demo Video (if applicable)
-* Presentation (PPT/PDF)
-* Deployment Link (if available)
+Mongoose is used for interacting with MongoDB from the Node.js backend.
 
-> **Late submissions will not be considered.**
-
----
-
-# 🤝 Code of Conduct
-
-Participants must:
-
-* Respect fellow participants and organizers.
-* Maintain professional behavior throughout the event.
-* Avoid harassment, discrimination, or offensive language.
-* Follow all organizational policies.
-
-Violation of these rules may result in **immediate disqualification**.
-
----
-
-# 📜 Intellectual Property
-
-* Teams retain ownership of their original ideas unless otherwise specified by the organizer.
-* By participating, teams grant the organizer permission to showcase their project for internal demonstrations, learning, and promotional purposes.
-
----
-
-# ❌ Disqualification
-
-Teams may be disqualified for:
-
-* Plagiarism
-* Providing false information during registration
-* Use of unauthorized materials
-* Violation of event rules
-* Misconduct
-* Failure to submit before the deadline (20/07/2026)
-
----
-
-# 🆘 Support
-
-Participants may contact the organizing committee for:
-
-* Technical support
-* Event-related queries
-* Submission assistance
-* Rule clarifications
-
----
-
-# ⚖ Organizer's Decision
-
-* The decision of the judges and organizing committee will be final and binding.
-* Organizers reserve the right to amend the rules, schedule, or judging process if required.
-* Any updates will be communicated through official channels.
-
----
-
-# 📌 Git Workflow
+### Application flow
 
 ```text
-Receive GitLab Invitation
-          │
-          ▼
-Accept Invitation
-          │
-          ▼
-Clone Repository
-          │
-          ▼
-Develop Your Project
-          │
-          ▼
-git add .
-          │
-          ▼
-git commit -m "Commit message"
-          │
-          ▼
-git push
-          │
-          ▼
-Submit Before Deadline
+User
+ |
+ v
+React Frontend
+ |
+ | HTTP API Requests
+ v
+Node.js / Express Backend
+ |
+ | Database Operations
+ v
+MongoDB
 ```
 
 ---
 
-# 💻 Common Git Commands
+## 4. Repository Structure
 
-### Clone Repository
-
-```bash
-git clone <repository-url>
+```text
+nutriflow-deployment/
+│
+├── backend/
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── package-lock.json
+│   └── Application source files
+│
+├── frontend/
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── package-lock.json
+│   └── React application source
+│
+├── infrastructure/
+│   └── terraform-eks/
+│       └── Terraform infrastructure files
+│
+├── k8s/
+│   └── Kubernetes configuration files
+│
+├── Jenkinsfile
+├── .gitignore
+├── README.md
+└── test.md
 ```
 
-### Check Current Branch
+### Folder explanation
 
-```bash
-git branch
-```
+**backend/**
 
-### View Repository Status
+Contains the Node.js and Express.js application, its dependencies and Dockerfile.
 
-```bash
-git status
-```
+**frontend/**
 
-### Pull Latest Changes
+Contains the React application, frontend dependencies and Dockerfile.
 
-```bash
-git pull origin main
-```
+**infrastructure/terraform-eks/**
 
-### Stage Changes
+Contains the Terraform configuration for preparing AWS infrastructure associated with Amazon EKS.
 
-```bash
-git add .
-```
+**k8s/**
 
-### Commit Changes
+Contains Kubernetes configuration files used to define application workloads and deployment resources.
 
-```bash
-git commit -m "Your commit message"
-```
+**Jenkinsfile**
 
-### Push Changes
-
-```bash
-git push
-```
-
-### View Commit History
-
-```bash
-git log --oneline
-```
+Defines the Jenkins CI pipeline, including source checkout, application checks, SonarQube analysis, Docker image building and publishing images to Amazon ECR.
 
 ---
 
-# 📅 Hackathon Reminder
+## 5. Docker Containerization
 
-* Commit your work frequently.
-* Push your code regularly to avoid losing progress.
-* Ensure your final code is pushed before the submission deadline (20/07/2026).
-* Your repository access will expire automatically after the hackathon concludes.
+Docker is used to package the frontend and backend applications into portable container images.
 
-Good luck, and happy coding! 🚀
+Each application has its own Dockerfile.
+
+### Backend image
+
+From the repository root:
+
+```bash
+docker build -t nutriflow-backend:v1 ./backend
+```
+
+Run the backend container:
+
+```bash
+docker run -d \
+  --name nutriflow-backend \
+  -p 8000:8000 \
+  nutriflow-backend:v1
+```
+
+### Frontend image
+
+```bash
+docker build -t nutriflow-frontend:v1 ./frontend
+```
+
+Run the frontend container:
+
+```bash
+docker run -d \
+  --name nutriflow-frontend \
+  -p 8080:8080 \
+  nutriflow-frontend:v1
+```
+
+### Verify containers
+
+```bash
+docker ps
+```
+
+View container logs:
+
+```bash
+docker logs nutriflow-backend
+docker logs nutriflow-frontend
+```
+
+**Note:** The frontend and backend need to be configured with the appropriate API routing and runtime environment for the deployment environment.
+
+---
+
+## 6. Jenkins CI Pipeline
+
+Jenkins is used to automate the continuous integration process.
+
+The pipeline is defined in the root-level `Jenkinsfile`.
+
+### Pipeline stages
+
+**Stage 1 – Checkout**
+
+Jenkins retrieves the latest source code from the configured Git repository.
+
+It also checks that the frontend and backend package files and Dockerfiles exist.
+
+**Stage 2 – Frontend Checks**
+
+Jenkins installs frontend dependencies and builds the React application.
+
+```bash
+npm ci
+npm run build
+```
+
+**Stage 3 – Backend Checks**
+
+Jenkins installs backend dependencies and performs a Node.js syntax check.
+
+```bash
+npm ci
+node --check index.js
+```
+
+**Stage 4 – SonarQube Analysis**
+
+SonarQube scans the frontend and backend source code to identify code-quality issues and potential problems.
+
+The Jenkins pipeline uses the configured SonarQube server and scanner installation.
+
+**Stage 5 – Build and Push Docker Images**
+
+Jenkins builds separate Docker images for the frontend and backend.
+
+The images are tagged using the Jenkins build number and the `latest` tag.
+
+**Stage 6 – Amazon ECR Push**
+
+Jenkins authenticates with Amazon ECR using the AWS CLI and pushes the images to their respective repositories.
+
+The ECR repositories used in the pipeline are:
+
+- `nutriflow-frontend`
+- `nutriflow-backend`
+
+Images are published with build-specific and `latest` tags.
+
+### Current CI workflow
+
+```text
+GitHub
+   |
+   v
+Jenkins Checkout
+   |
+   v
+Frontend Build Check
+   |
+   v
+Backend Syntax Check
+   |
+   v
+SonarQube Analysis
+   |
+   v
+Docker Image Build
+   |
+   v
+Amazon ECR Authentication
+   |
+   v
+Push Frontend Image
+   |
+   v
+Push Backend Image
+```
+
+The current Jenkinsfile implements the CI and image-publishing stages. Kubernetes deployment through EKS can be added as a subsequent CD stage.
+
+---
+
+## 7. Amazon ECR – Container Image Storage
+
+Amazon Elastic Container Registry (ECR) is used to store the Docker images created by Jenkins.
+
+ECR provides a private image registry integrated with AWS services.
+
+The project uses separate repositories for the frontend and backend.
+
+Example image naming:
+
+```text
+<account-id>.dkr.ecr.<region>.amazonaws.com/nutriflow-frontend:<tag>
+
+<account-id>.dkr.ecr.<region>.amazonaws.com/nutriflow-backend:<tag>
+```
+
+The Jenkins pipeline authenticates using:
+
+```bash
+aws ecr get-login-password --region ap-south-1
+```
+
+The images are then pushed to the corresponding ECR repositories.
+
+---
+
+## 8. Infrastructure as Code – Terraform
+
+Terraform is used to define AWS infrastructure through configuration files.
+
+The project contains an infrastructure directory for the EKS-based setup:
+
+```text
+infrastructure/
+└── terraform-eks/
+```
+
+Terraform helps make infrastructure:
+
+- Repeatable.
+- Version-controlled.
+- Easier to review.
+- Easier to manage.
+- Less dependent on manual console operations.
+
+Typical Terraform workflow:
+
+```bash
+terraform init
+
+terraform fmt
+
+terraform validate
+
+terraform plan
+
+terraform apply
+```
+
+Always review the Terraform plan before applying infrastructure changes.
+
+**Cost consideration:** Amazon EKS has a control-plane charge. Worker nodes, EBS volumes, load balancers and networking resources can add further costs. Remove unused resources carefully when the environment is no longer needed.
+
+---
+
+## 9. Kubernetes and Amazon EKS
+
+Amazon EKS is AWS's managed Kubernetes service.
+
+Kubernetes is responsible for managing containerized application workloads.
+
+The repository contains a `k8s/` directory for Kubernetes configuration.
+
+Kubernetes provides features such as:
+
+- Container scheduling.
+- Application deployment management.
+- Service discovery.
+- Load balancing.
+- Scaling.
+- Self-healing and restart management.
+
+### Basic Kubernetes workflow
+
+```text
+Docker Images
+      |
+      v
+   Amazon ECR
+      |
+      v
+   Amazon EKS
+      |
+      v
+  Kubernetes Pods
+      |
+      v
+Frontend and Backend
+```
+
+The EKS deployment stage can be connected to Jenkins after the infrastructure and Kubernetes deployment configurations are ready.
+
+---
+
+## 10. Monitoring and Observability
+
+Monitoring was implemented in the earlier EC2-based deployment.
+
+The monitoring stack included:
+
+### Prometheus
+
+Prometheus collects and stores time-series metrics.
+
+It was configured to collect metrics from:
+
+- Prometheus itself.
+- Node Exporter.
+
+### Node Exporter
+
+Node Exporter collects system-level metrics from the Linux server, such as CPU, memory and filesystem information.
+
+### Grafana
+
+Grafana provides dashboards for visualizing metrics collected by Prometheus.
+
+### Monitoring architecture
+
+```text
+Linux EC2 Instance
+       |
+       v
+  Node Exporter
+       |
+       v
+   Prometheus
+       |
+       v
+    Grafana
+       |
+       v
+ Monitoring Dashboards
+```
+
+The earlier EC2 monitoring setup was validated by checking that the Prometheus scrape targets were UP and that the Grafana interface was accessible.
+
+The monitoring configuration for the previous EC2 deployment should not be confused with a completed monitoring deployment on the new EKS infrastructure.
+
+---
+
+## 11. Environment Variables and Security
+
+The application requires environment-specific configuration.
+
+Examples include:
+
+```env
+PORT=8000
+MONGO_URI=<your-mongodb-connection-string>
+JWT_SECRET=<your-secret>
+GEMINI_API_KEY=<your-api-key>
+GEMINI_MODEL=<your-model-name>
+```
+
+Other integrations may require additional configuration variables.
+
+### Security practices
+
+- Do not commit `.env` files.
+- Never publish API keys, passwords or access tokens.
+- Use Jenkins credentials for CI/CD secrets.
+- Prefer IAM roles over hardcoded AWS access keys.
+- Restrict SSH access to trusted IP addresses.
+- Avoid exposing internal services such as MongoDB, Jenkins and SonarQube publicly.
+- Use least-privilege IAM permissions.
+- Protect Terraform state files because they may contain sensitive values.
+
+---
+
+## 12. Prerequisites
+
+To work with this project, you should have:
+
+- Git
+- Node.js and npm
+- Docker
+- AWS CLI
+- Terraform
+- kubectl
+- An AWS account
+- A GitHub account
+- Jenkins
+- SonarQube
+
+Some tools are needed only for the corresponding development or infrastructure stages.
+
+---
+
+## 13. Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Afthabahammed/nutriflow-deployment.git
+```
+
+Navigate into the project:
+
+```bash
+cd nutriflow-deployment
+```
+
+Check the repository structure:
+
+```bash
+ls -la
+```
+
+### Frontend setup
+
+```bash
+cd frontend
+
+npm ci
+
+npm run build
+```
+
+### Backend setup
+
+Open another terminal or return to the repository root:
+
+```bash
+cd backend
+
+npm ci
+
+node --check index.js
+```
+
+Configure the required environment variables before starting the application.
+
+Refer to the individual application configuration and Dockerfiles for the appropriate runtime commands.
+
+---
+
+## 14. Skills and Learning Outcomes
+
+This project provided practical experience in:
+
+- Full-stack application deployment.
+- Linux server administration.
+- AWS EC2 management.
+- Docker image creation and container management.
+- Jenkins pipeline development.
+- SonarQube code-quality analysis.
+- Amazon ECR image management.
+- Terraform infrastructure management.
+- Kubernetes and Amazon EKS concepts.
+- Prometheus metrics collection.
+- Grafana monitoring dashboards.
+- Git and GitHub version control.
+- Environment configuration and secret management.
+- Troubleshooting application and infrastructure issues.
+
+---
+
+## 15. Future Enhancements
+
+The project can be extended with:
+
+- Complete automated deployment from Jenkins to Amazon EKS.
+- Kubernetes rollout verification and rollback.
+- Argo CD for GitOps-based continuous delivery.
+- Prometheus and Grafana monitoring for EKS workloads.
+- Centralized log management using the Elastic Stack.
+- Trivy container image and dependency vulnerability scanning.
+- Improved IAM and Kubernetes RBAC configuration.
+- Automated infrastructure provisioning and cleanup.
+
+---
+
+## 16. Conclusion
+
+NutriFlow brings application development and DevOps practices together in one project.
+
+It demonstrates how a full-stack application can be containerized, checked through an automated Jenkins pipeline, analyzed using SonarQube, and packaged for storage in Amazon ECR.
+
+It also provides a foundation for infrastructure automation with Terraform and application orchestration with Kubernetes and Amazon EKS.
+
+Working through this project helped develop practical skills in cloud computing, containerization, CI/CD, infrastructure as code and monitoring.
+
+---
+
+**Project Repository:** https://github.com/Afthabahammed/nutriflow-deployment
+
+**Maintained by:** Afthabahammed
